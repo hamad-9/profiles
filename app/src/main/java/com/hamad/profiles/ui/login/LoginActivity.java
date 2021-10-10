@@ -14,6 +14,7 @@ import com.hamad.profiles.di.component.ActivityComponent;
 import com.hamad.profiles.ui.base.BaseActivity;
 import com.hamad.profiles.ui.main.MainActivity;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
@@ -41,14 +42,15 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     public void handleError(Throwable throwable) {
         // handle the error when you send a request
         ANError error = (ANError) throwable;
-//        Scanner scanner = new Scanner(error.getErrorBody());
-//        JSONObject jsonObject = scanner.
-//        String stringError  = error.toString();
-//        String stringError2  = error.getErrorBody();
-//        String stringError3  = error.getErrorDetail();
-        String stringError4 = error.getErrorBody().substring(12, error.getErrorBody().length()-2);
-//        Log.e("aomari", stringError4);
-        Toast.makeText(this, stringError4,Toast.LENGTH_LONG).show();
+        try {
+            JSONObject jsonObject = new JSONObject(error.getErrorBody());
+            Toast.makeText(this, jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+
+        }catch (JSONException err){
+            Toast.makeText(this, "error",Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
     @Override
