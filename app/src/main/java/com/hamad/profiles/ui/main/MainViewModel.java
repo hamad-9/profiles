@@ -1,15 +1,19 @@
 package com.hamad.profiles.ui.main;
 
 import androidx.databinding.ObservableField;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.hamad.profiles.data.DataManager;
+import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.ui.base.BaseViewModel;
 import com.hamad.profiles.utils.rx.SchedulerProvider;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainViewModel extends BaseViewModel<MainNavigator> {
@@ -28,8 +32,13 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
 
     private int action = NO_ACTION;
 
+    private final MutableLiveData<List<ProfileResponse>> ProfileListLiveData;
+
+
     public MainViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
+        ProfileListLiveData = new MutableLiveData<>();
+        fetchProfiles();
     }
 
     public ObservableField<String> getAppVersion() {
@@ -48,7 +57,7 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
                     getNavigator().openLoginActivity();
                 }, throwable -> {
                     setIsLoading(false);
-                    Log.d(TAG, "logout: hamad Error 401");
+                    Log.d(TAG, "logout: hamad Error");
                     getNavigator().handleError(throwable);
                 }));
     }
@@ -73,4 +82,30 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
     public void updateAppVersion(String version) {
         appVersion.set(version);
     }
+
+
+    //------------------------------------------------------------------------------------------------
+    public void fetchProfiles() {
+        setIsLoading(true);
+        getCompositeDisposable().add(getDataManager()
+                .getProfileApiCall()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(profileResponse -> {
+                    if (profileResponse != null ) {
+                        ArrayList<ProfileResponse> arrayList = new ArrayList();
+                        arrayList.addAll(profileResponse);
+                        getNavigator().updateList(arrayList);
+//                        ProfileListLiveData.setValue(arrayList);
+                    }
+                    setIsLoading(false);
+                }, throwable -> {
+                    setIsLoading(false);
+                    getNavigator().handleError(throwable);
+                }));
+
+    }
+
+    //------------------------------------------------------------------------------------------------
+
 }

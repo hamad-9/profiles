@@ -15,24 +15,39 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.hamad.profiles.BR;
 import com.hamad.profiles.BuildConfig;
 import com.hamad.profiles.R;
+import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.databinding.ActivityMainBinding;
 
 import com.hamad.profiles.di.component.ActivityComponent;
 
 import com.hamad.profiles.ui.base.BaseActivity;
 import com.hamad.profiles.ui.login.LoginActivity;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> implements MainNavigator {
+import java.util.ArrayList;
+
+import javax.inject.Inject;
+
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel>
+        implements MainNavigator {
 
     private static final String TAG = "MainActivity";
+
+    @Inject
+    ProfileAdapter profileAdapter;
+    @Inject
+    LinearLayoutManager mLayoutManager;
+
+    @Inject
+    DefaultItemAnimator mDefaultItemAnimator;
+
     private ActivityMainBinding mActivityMainBinding;
-    private SwipePlaceHolderView mCardsContainerView;
     private DrawerLayout mDrawer;
 
     private NavigationView mNavigationView;
@@ -51,6 +66,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     public int getLayoutId() {
         return R.layout.activity_main;
     }
+
+
 
     @Override
     public void handleError(Throwable throwable) {
@@ -134,10 +151,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     private void setUp() {
+
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mActivityMainBinding.RecyclerV.setLayoutManager(mLayoutManager);
+        mActivityMainBinding.RecyclerV.setItemAnimator(mDefaultItemAnimator);
+        mActivityMainBinding.RecyclerV.setAdapter(profileAdapter);
+
+
         mDrawer = mActivityMainBinding.drawerView;
         mToolbar = mActivityMainBinding.toolbar;
         mNavigationView = mActivityMainBinding.navigationView;
-
 
         setSupportActionBar(mToolbar);
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
@@ -163,6 +186,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         String version = getString(R.string.version) + " " + BuildConfig.VERSION_NAME;
         mViewModel.updateAppVersion(version);
         mViewModel.onNavMenuCreated();
+
+
+
+    }
+
+    @Override
+    public void updateList(ArrayList<ProfileResponse> users){
+        profileAdapter.updateList(users);
+
     }
 
 

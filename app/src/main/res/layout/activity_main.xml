@@ -51,26 +51,15 @@
                             app:titleTextAppearance="@style/Toolbar.TitleText"
                             app:titleTextColor="@color/white" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/light_gray" />
 
                     </com.google.android.material.appbar.AppBarLayout>
 
-                    <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/RecyclerV"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Hello World" />
-                    </LinearLayout>
+
                 </LinearLayout>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -35,17 +35,18 @@ public class ApiHeader {
         @SerializedName("token")
         private String mAccessToken;
 
-        @Expose
-        @SerializedName("api_key")
-        private String mApiKey;
+//        @Expose
+//        @SerializedName("api_key")
+//        private String mApiKey;
+//
+//        @Expose
+//        @SerializedName("user_id")
+//        private Long mUserId;
 
-        @Expose
-        @SerializedName("user_id")
-        private Long mUserId;
-
-        public ProtectedApiHeader(String mApiKey, Long mUserId, String mAccessToken) {
-            this.mApiKey = mApiKey;
-            this.mUserId = mUserId;
+    //String mApiKey, Long mUserId, String mAccessToken
+        public ProtectedApiHeader(String mAccessToken) {
+//            this.mApiKey = mApiKey;
+//            this.mUserId = mUserId;
             this.mAccessToken = mAccessToken;
         }
 
@@ -57,21 +58,21 @@ public class ApiHeader {
             mAccessToken = accessToken;
         }
 
-        public String getApiKey() {
-            return mApiKey;
-        }
-
-        public void setApiKey(String apiKey) {
-            mApiKey = apiKey;
-        }
-
-        public Long getUserId() {
-            return mUserId;
-        }
-
-        public void setUserId(Long mUserId) {
-            this.mUserId = mUserId;
-        }
+//        public String getApiKey() {
+//            return mApiKey;
+//        }
+//
+//        public void setApiKey(String apiKey) {
+//            mApiKey = apiKey;
+//        }
+//
+//        public Long getUserId() {
+//            return mUserId;
+//        }
+//
+//        public void setUserId(Long mUserId) {
+//            this.mUserId = mUserId;
+//        }
     }
 //---------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------

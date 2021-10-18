@@ -9,6 +9,7 @@ import com.hamad.profiles.data.model.api.LoginRequest;
 import com.hamad.profiles.data.model.api.LoginResponse;
 import com.hamad.profiles.data.model.api.LogoutResponse;
 //import com.hamad.mvvmtemplate.data.model.db.Question;
+import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.data.model.db.User;
 import com.hamad.profiles.data.remote.ApiHeader;
 import com.hamad.profiles.data.remote.ApiHelper;
@@ -49,6 +50,9 @@ public class AppDataManager implements DataManager {
     public Single<LogoutResponse> doLogoutApiCall() {
         return mApiHelper.doLogoutApiCall();
     }
+
+    @Override
+    public Single<List<ProfileResponse>> getProfileApiCall() { return mApiHelper.getProfileApiCall();}
 
 
     @Override

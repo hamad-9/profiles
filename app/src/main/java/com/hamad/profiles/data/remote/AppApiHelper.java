@@ -3,7 +3,11 @@ package com.hamad.profiles.data.remote;
 import com.hamad.profiles.data.model.api.LoginRequest;
 import com.hamad.profiles.data.model.api.LoginResponse;
 import com.hamad.profiles.data.model.api.LogoutResponse;
+import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+
+import java.util.List;
+
 import io.reactivex.Single;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -38,6 +42,13 @@ public class AppApiHelper implements ApiHelper {
                 .getObjectSingle(LogoutResponse.class);
     }
 
+    @Override
+    public Single<List<ProfileResponse>> getProfileApiCall() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_PROFILE)
+                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .build()
+                .getObjectListSingle(ProfileResponse.class);
+    }
 
 
     @Override
