@@ -2,8 +2,10 @@ package com.hamad.profiles.ui.main;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +21,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+
+    private static final String TAG = "MainAdapter";
 
     public static final int VIEW_TYPE_EMPTY = 0;
 
@@ -97,7 +101,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         @Override
-        public void onItemClick() {
+        public void onItemClick(String firstName) {
+
+            Log.d(TAG, "hana saif: " + firstName);
 
 //            if (firstName != null) {
 //                try {

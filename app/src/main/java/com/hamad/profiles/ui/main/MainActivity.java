@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.navigation.NavigationView;
@@ -43,7 +45,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     ProfileAdapter profileAdapter;
     @Inject
     LinearLayoutManager mLayoutManager;
-
     @Inject
     DefaultItemAnimator mDefaultItemAnimator;
 
@@ -156,6 +157,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mActivityMainBinding.RecyclerV.setLayoutManager(mLayoutManager);
         mActivityMainBinding.RecyclerV.setItemAnimator(mDefaultItemAnimator);
         mActivityMainBinding.RecyclerV.setAdapter(profileAdapter);
+        mActivityMainBinding.RecyclerV.addItemDecoration(
+                        new DividerItemDecoration(this,
+                        DividerItemDecoration.VERTICAL));
 
 
         mDrawer = mActivityMainBinding.drawerView;
@@ -217,6 +221,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
             mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
     }
+
 
 
 

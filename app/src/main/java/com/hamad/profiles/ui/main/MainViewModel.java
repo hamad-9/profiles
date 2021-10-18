@@ -96,7 +96,6 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
                         ArrayList<ProfileResponse> arrayList = new ArrayList();
                         arrayList.addAll(profileResponse);
                         getNavigator().updateList(arrayList);
-//                        ProfileListLiveData.setValue(arrayList);
                     }
                     setIsLoading(false);
                 }, throwable -> {

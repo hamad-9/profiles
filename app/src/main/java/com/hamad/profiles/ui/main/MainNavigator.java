@@ -15,5 +15,4 @@ public interface MainNavigator {
 
     void updateList(ArrayList<ProfileResponse> users);
 
-//    void ToastMakeText(String string);
 }
