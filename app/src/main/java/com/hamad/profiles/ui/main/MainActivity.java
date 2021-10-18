@@ -31,13 +31,14 @@ import com.hamad.profiles.di.component.ActivityComponent;
 
 import com.hamad.profiles.ui.base.BaseActivity;
 import com.hamad.profiles.ui.login.LoginActivity;
+import com.hamad.profiles.ui.main.profile.ProfileFragment;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel>
-        implements MainNavigator {
+        implements MainNavigator  {
 
     private static final String TAG = "MainActivity";
 
@@ -153,6 +154,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     private void setUp() {
 
+        //----------------------------------------------------------------------------
+        //set up Recycler View
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mActivityMainBinding.RecyclerV.setLayoutManager(mLayoutManager);
         mActivityMainBinding.RecyclerV.setItemAnimator(mDefaultItemAnimator);
@@ -160,7 +163,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mActivityMainBinding.RecyclerV.addItemDecoration(
                         new DividerItemDecoration(this,
                         DividerItemDecoration.VERTICAL));
-
+        //----------------------------------------------------------------------------
 
         mDrawer = mActivityMainBinding.drawerView;
         mToolbar = mActivityMainBinding.toolbar;
@@ -222,7 +225,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         }
     }
 
+    public void openProfileFragment(){
+        lockDrawer();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.clRootView, ProfileFragment.newInstance(), ProfileFragment.TAG)
+                .commit();
 
-
+    }
 
 }

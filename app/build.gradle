@@ -21,6 +21,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     def BASE_URL_FLAVOR = "BASE_URL_FLAVOR"
@@ -88,6 +89,9 @@ dependencies {
 
     // database
     implementation "androidx.room:room-rxjava2:$rootProject.roomDatabaseVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomDatabaseVersion"
 
     // font
@@ -130,6 +134,9 @@ dependencies {
     // view model
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
 }
 
 configurations.all {

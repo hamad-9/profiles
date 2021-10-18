@@ -7,14 +7,19 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hamad.profiles.R;
 import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.databinding.ItemProfileEmptyViewBinding;
 import com.hamad.profiles.databinding.ItemProfileViewBinding;
 import com.hamad.profiles.ui.base.BaseViewHolder;
+import com.hamad.profiles.ui.main.profile.ProfileFragment;
 import com.hamad.profiles.utils.AppLogger;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +89,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public class ProfileViewHolder extends BaseViewHolder implements ProfileItemViewModel.ProfileItemViewModelListener {
 
         private ItemProfileViewBinding mBinding;
-
         private ProfileItemViewModel mProfileItemViewModel;
 
         public ProfileViewHolder(ItemProfileViewBinding binding) {
@@ -101,21 +105,8 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         @Override
-        public void onItemClick(String firstName) {
+        public void onItemClick(ProfileResponse profile) {
 
-            Log.d(TAG, "hana saif: " + firstName);
-
-//            if (firstName != null) {
-//                try {
-//                    Intent intent = new Intent();
-//                    intent.setAction(Intent.ACTION_VIEW);
-//                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
-//                    intent.setData(Uri.parse(firstName));
-//                    itemView.getContext().startActivity(intent);
-//                } catch (Exception e) {
-//                    AppLogger.d("firstName error");
-//                }
-//            }
         }
     }
 
