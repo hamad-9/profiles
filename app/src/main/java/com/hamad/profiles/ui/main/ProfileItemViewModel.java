@@ -30,11 +30,11 @@ public class ProfileItemViewModel {
     }
 
     public void onItemClick() {
-        mListener.onItemClick(mProfile);
+        mListener.onItemClick();
     }
 
     public interface ProfileItemViewModelListener {
-        void onItemClick(ProfileResponse profile);
+        void onItemClick();
     }
 
 }

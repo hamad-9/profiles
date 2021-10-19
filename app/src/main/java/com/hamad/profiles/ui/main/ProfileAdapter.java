@@ -86,6 +86,17 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if (mProfileResponseList != null && !mProfileResponseList.isEmpty()) {
+            return VIEW_TYPE_NORMAL;
+        } else {
+            return VIEW_TYPE_EMPTY;
+        }
+    }
+
+
+    //-----------------------------------------------------------------------------------------------------------------
     public class ProfileViewHolder extends BaseViewHolder implements ProfileItemViewModel.ProfileItemViewModelListener {
 
         private ItemProfileViewBinding mBinding;
@@ -105,28 +116,13 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         @Override
-        public void onItemClick(ProfileResponse profile) {
-
+        public void onItemClick() {
+            Log.d(TAG, "Numan: this is from ProfileAdapter  " );
+            mListener.onProfileItemClick();
         }
     }
-
     //-----------------------------------------------------------------------------------------------------------------
-
-    @Override
-    public int getItemViewType(int position) {
-        if (mProfileResponseList != null && !mProfileResponseList.isEmpty()) {
-            return VIEW_TYPE_NORMAL;
-        } else {
-            return VIEW_TYPE_EMPTY;
-        }
-    }
-
-    public interface MainAdapterListener {
-        void onRetryClick();
-    }
-
-
-
+    //-----------------------------------------------------------------------------------------------------------------
     public class EmptyViewHolder extends BaseViewHolder implements ProfileEmptyItemViewModel.ProfileEmptyItemViewModelListener {
 
         private ItemProfileEmptyViewBinding mBinding;
@@ -144,7 +140,17 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         public void onRetryClick() {
-            mListener.onRetryClick();
+//            mListener.onRetryClick();
         }
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+
+
+    public interface MainAdapterListener {
+        void onProfileItemClick();
+    }
+
+    public void setListener(MainAdapterListener listener) {
+        this.mListener = listener;
     }
 }

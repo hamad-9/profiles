@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel>
-        implements MainNavigator  {
+        implements MainNavigator, ProfileAdapter.MainAdapterListener {
 
     private static final String TAG = "MainActivity";
 
@@ -69,14 +70,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         return R.layout.activity_main;
     }
 
-
+    @Override
+    public void performDependencyInjection(ActivityComponent buildComponent) {
+        buildComponent.inject(this);
+    }
 
     @Override
     public void handleError(Throwable throwable) {
         // handle error
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,10 +135,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         setUp();
     }
 
-    @Override
-    public void performDependencyInjection(ActivityComponent buildComponent) {
-        buildComponent.inject(this);
-    }
+
 
     @Override
     protected void onResume() {
@@ -156,6 +155,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
         //----------------------------------------------------------------------------
         //set up Recycler View
+        profileAdapter.setListener(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mActivityMainBinding.RecyclerV.setLayoutManager(mLayoutManager);
         mActivityMainBinding.RecyclerV.setItemAnimator(mDefaultItemAnimator);
@@ -234,4 +234,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     }
 
+    @Override
+    public void onProfileItemClick() {
+        Log.d(TAG, "Numan: this is from mainActivity");
+    }
 }
