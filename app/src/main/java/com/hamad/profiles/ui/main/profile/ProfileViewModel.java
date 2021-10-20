@@ -10,6 +10,11 @@ import com.hamad.profiles.utils.rx.SchedulerProvider;
 public class ProfileViewModel extends BaseViewModel<ProfileNavigator> {
 
     public ProfileResponse profileResponse;
+    public String Image1;
+    public String Image2;
+    public String Image3;
+    public String gender;
+
 
     public ProfileViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
@@ -17,6 +22,7 @@ public class ProfileViewModel extends BaseViewModel<ProfileNavigator> {
     public void onNavBackClick() {
         getNavigator().goBack();
     }
+
 
 
 

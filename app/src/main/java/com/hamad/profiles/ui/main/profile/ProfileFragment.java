@@ -1,6 +1,5 @@
 package com.hamad.profiles.ui.main.profile;
 
-import androidx.databinding.library.baseAdapters.BR;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -14,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hamad.profiles.BR;
 import com.hamad.profiles.R;
 import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.databinding.ProfileFragmentBinding;
@@ -52,12 +52,6 @@ public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, Profil
 
 
 
-//    public void setUpViewModel(){
-//        if (this.getArguments() != null) {
-//            mViewModel.setPosition(this.getArguments().getInt("position"));
-//        }
-//    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +59,15 @@ public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, Profil
         ProfileResponse profileResponse = (ProfileResponse) getArguments().getSerializable("profile");
         Log.d(TAG, "onCreate: done");
         mViewModel.profileResponse = profileResponse;
+        mViewModel.Image1=profileResponse.getPics()[0];
+        mViewModel.Image2=profileResponse.getPics()[1];
+        mViewModel.Image3=profileResponse.getPics()[2];
+
+        if (profileResponse.getGender() == "M") {
+            mViewModel.gender = "Gender: Male";
+        } else {
+            mViewModel.gender = "Gender: female";
+        }
     }
 
 
