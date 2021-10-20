@@ -34,6 +34,7 @@ import com.hamad.profiles.ui.base.BaseActivity;
 import com.hamad.profiles.ui.login.LoginActivity;
 import com.hamad.profiles.ui.main.profile.ProfileFragment;
 
+import java.security.PrivateKey;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -225,17 +226,27 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         }
     }
 
-    public void openProfileFragment(){
-        lockDrawer();
+    @Override
+    public void onProfileItemClick(ProfileResponse profile) {
+        Log.d(TAG, "Numan: this is from mainActivity  " + profile.getFirstName());
+
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("position", 1);
+//        ProfileFragment fragment = ProfileFragment.newInstance();
+//        fragment.setArguments(bundle);
+////        fragment.setUpViewModel();
+
+
         getSupportFragmentManager()
                 .beginTransaction()
+                .disallowAddToBackStack()
+                .setCustomAnimations(R.anim.slide_left,  R.anim.slide_right)
                 .add(R.id.clRootView, ProfileFragment.newInstance(), ProfileFragment.TAG)
                 .commit();
 
+
+
     }
 
-    @Override
-    public void onProfileItemClick() {
-        Log.d(TAG, "Numan: this is from mainActivity");
-    }
+
 }

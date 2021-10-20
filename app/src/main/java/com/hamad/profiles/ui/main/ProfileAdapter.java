@@ -116,9 +116,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         @Override
-        public void onItemClick() {
-            Log.d(TAG, "Numan: this is from ProfileAdapter  " );
-            mListener.onProfileItemClick();
+        public void onItemClick(ProfileResponse profile) {
+            Log.d(TAG, "Numan: this is from ProfileAdapter  "  + profile.getFirstName());
+            mListener.onProfileItemClick(profile);
         }
     }
     //-----------------------------------------------------------------------------------------------------------------
@@ -147,7 +147,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
 
     public interface MainAdapterListener {
-        void onProfileItemClick();
+        void onProfileItemClick(ProfileResponse profile);
     }
 
     public void setListener(MainAdapterListener listener) {

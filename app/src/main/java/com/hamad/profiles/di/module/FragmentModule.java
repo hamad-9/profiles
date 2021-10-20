@@ -30,7 +30,7 @@ public class FragmentModule {
     }
 
     @Provides
-    ProfileViewModel provideAboutViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+    ProfileViewModel provideProfileViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         Supplier<ProfileViewModel> supplier = () -> new ProfileViewModel(dataManager, schedulerProvider);
         ViewModelProviderFactory<ProfileViewModel> factory = new ViewModelProviderFactory<>(ProfileViewModel.class, supplier);
         return new ViewModelProvider(fragment, factory).get(ProfileViewModel.class);

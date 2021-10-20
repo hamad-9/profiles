@@ -14,15 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hamad.profiles.R;
+import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.databinding.ProfileFragmentBinding;
 import com.hamad.profiles.di.component.FragmentComponent;
 import com.hamad.profiles.ui.base.BaseFragment;
 
 public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, ProfileViewModel> implements ProfileNavigator {
 
-    private ProfileViewModel mViewModel;
+    public static final String TAG = "ProfileFragment";
 
-    public static final String TAG = "AboutFragment";
 
 
     public static ProfileFragment newInstance() {
@@ -31,7 +31,6 @@ public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, Profil
         fragment.setArguments(args);
         return fragment;
     }
-
 
     @Override
     public int getBindingVariable() {
@@ -49,23 +48,27 @@ public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, Profil
         getBaseActivity().onFragmentDetached(TAG);
     }
 
+
+
+//    public void setUpViewModel(){
+//        if (this.getArguments() != null) {
+//            mViewModel.setPosition(this.getArguments().getInt("position"));
+//        }
+//    }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.profile_fragment, container, false);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mViewModel.setNavigator(this);
     }
+
 
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-        // TODO: Use the ViewModel
-    }
+
 
 
 }
