@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,9 @@ public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, Profil
 
 
 
-    public static ProfileFragment newInstance() {
+    public static ProfileFragment newInstance(ProfileResponse profile) {
         Bundle args = new Bundle();
+        args.putSerializable("profile", profile);
         ProfileFragment fragment = new ProfileFragment();
         fragment.setArguments(args);
         return fragment;
@@ -60,6 +62,9 @@ public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, Profil
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
+        ProfileResponse profileResponse = (ProfileResponse) getArguments().getSerializable("profile");
+        Log.d(TAG, "onCreate: done");
+        mViewModel.profileResponse = profileResponse;
     }
 
 

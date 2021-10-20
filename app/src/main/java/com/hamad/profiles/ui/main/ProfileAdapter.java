@@ -1,5 +1,6 @@
 package com.hamad.profiles.ui.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.hamad.profiles.R;
 import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.databinding.ItemProfileEmptyViewBinding;
@@ -27,6 +29,8 @@ import javax.inject.Inject;
 
 public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
+    protected Context mContext;
+
     private static final String TAG = "MainAdapter";
 
     public static final int VIEW_TYPE_EMPTY = 0;
@@ -38,8 +42,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private MainAdapterListener mListener;
 
     @Inject
-    public ProfileAdapter(ArrayList<ProfileResponse> mProfileResponseList) {
+    public ProfileAdapter(ArrayList<ProfileResponse> mProfileResponseList, Context context) {
         this.mProfileResponseList = mProfileResponseList;
+        this.mContext = context;
     }
 
     //-----------------------------------------------------------------------------------------------------------------
@@ -113,6 +118,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             mProfileItemViewModel = new ProfileItemViewModel(profile, this);
             mBinding.setViewModel(mProfileItemViewModel);
             mBinding.executePendingBindings();
+
+            Glide.with(mContext)
+                    .load(profile.getAvatar())
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .into(mBinding.imageView);
         }
 
         @Override

@@ -1,5 +1,6 @@
 package com.hamad.profiles.ui.main.profile;
 import com.hamad.profiles.data.DataManager;
+import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.ui.base.BaseViewModel;
 import com.hamad.profiles.utils.rx.SchedulerProvider;
 
@@ -8,6 +9,7 @@ import com.hamad.profiles.utils.rx.SchedulerProvider;
 
 public class ProfileViewModel extends BaseViewModel<ProfileNavigator> {
 
+    public ProfileResponse profileResponse;
 
     public ProfileViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);

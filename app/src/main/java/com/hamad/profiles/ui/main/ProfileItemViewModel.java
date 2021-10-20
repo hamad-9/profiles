@@ -21,6 +21,7 @@ public class ProfileItemViewModel {
         this.mProfile = profile;
         this.mListener = listener;
 
+
         imageUrl = new ObservableField<>(mProfile.getAvatar());
         firstName = new ObservableField<>(mProfile.getFirstName());
         lastName = new ObservableField<>(mProfile.getLastName());

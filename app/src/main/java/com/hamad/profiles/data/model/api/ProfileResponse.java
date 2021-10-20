@@ -5,10 +5,11 @@ import androidx.annotation.Nullable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class ProfileResponse {
+public class ProfileResponse implements Serializable {
 
     @Expose
     @SerializedName("id")

@@ -161,9 +161,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mActivityMainBinding.RecyclerV.setLayoutManager(mLayoutManager);
         mActivityMainBinding.RecyclerV.setItemAnimator(mDefaultItemAnimator);
         mActivityMainBinding.RecyclerV.setAdapter(profileAdapter);
-        mActivityMainBinding.RecyclerV.addItemDecoration(
-                        new DividerItemDecoration(this,
-                        DividerItemDecoration.VERTICAL));
+//        mActivityMainBinding.RecyclerV.addItemDecoration(
+//                        new DividerItemDecoration(this,
+//                        DividerItemDecoration.VERTICAL));
         //----------------------------------------------------------------------------
 
         mDrawer = mActivityMainBinding.drawerView;
@@ -230,18 +230,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     public void onProfileItemClick(ProfileResponse profile) {
         Log.d(TAG, "Numan: this is from mainActivity  " + profile.getFirstName());
 
-//        Bundle bundle = new Bundle();
-//        bundle.putInt("position", 1);
-//        ProfileFragment fragment = ProfileFragment.newInstance();
-//        fragment.setArguments(bundle);
-////        fragment.setUpViewModel();
-
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
                 .setCustomAnimations(R.anim.slide_left,  R.anim.slide_right)
-                .add(R.id.clRootView, ProfileFragment.newInstance(), ProfileFragment.TAG)
+                .add(R.id.clRootView, ProfileFragment.newInstance(profile), ProfileFragment.TAG)
                 .commit();
 
 

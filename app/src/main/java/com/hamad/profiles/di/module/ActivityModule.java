@@ -30,7 +30,7 @@ public class ActivityModule {
 
     @Provides
     ProfileAdapter provideProfileAdapter(){
-        return  new ProfileAdapter(new ArrayList<>());
+        return  new ProfileAdapter(new ArrayList<>() , this.activity);
     }
 
 
