@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.mindorks:placeholderview:0.6.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/30cdb84025afd372c1d3b5af3b42b4b1/transformed/jetified-placeholderview-0.6.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/30cdb84025afd372c1d3b5af3b42b4b1/transformed/jetified-placeholderview-0.6.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/30cdb84025afd372c1d3b5af3b42b4b1/transformed/jetified-placeholderview-0.6.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b88067613b8f3d71cc24bcb232917a65/transformed/jetified-placeholderview-0.6.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b88067613b8f3d71cc24bcb232917a65/transformed/jetified-placeholderview-0.6.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b88067613b8f3d71cc24bcb232917a65/transformed/jetified-placeholderview-0.6.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mindorks/placeholderview/0.6.1/686d8bba15a45a16d34f9dd2b39399c7c1194f7a/placeholderview-0.6.1-javadoc.jar!/" />
