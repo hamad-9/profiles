@@ -32,7 +32,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> {
     }
 
     public void login(String username, String password) {
-        Log.d(TAG, "login: i'm here");
+//        Log.d(TAG, "login: i'm here");
         setIsLoading(true);
         //CompositeDisposable:
         getCompositeDisposable().add(getDataManager()

@@ -53,7 +53,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     private ActivityMainBinding mActivityMainBinding;
     private DrawerLayout mDrawer;
-
     private NavigationView mNavigationView;
     private Toolbar mToolbar;
 
@@ -155,15 +154,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     private void setUp() {
 
         //----------------------------------------------------------------------------
-        //set up Recycler View
         profileAdapter.setListener(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mActivityMainBinding.RecyclerV.setLayoutManager(mLayoutManager);
         mActivityMainBinding.RecyclerV.setItemAnimator(mDefaultItemAnimator);
         mActivityMainBinding.RecyclerV.setAdapter(profileAdapter);
-//        mActivityMainBinding.RecyclerV.addItemDecoration(
-//                        new DividerItemDecoration(this,
-//                        DividerItemDecoration.VERTICAL));
         //----------------------------------------------------------------------------
 
         mDrawer = mActivityMainBinding.drawerView;
