@@ -33,7 +33,6 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
 
     public abstract int getBindingVariable();
 
-
     public abstract
     @LayoutRes
     int getLayoutId();

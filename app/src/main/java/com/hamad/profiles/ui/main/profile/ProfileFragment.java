@@ -26,6 +26,7 @@ public class ProfileFragment extends BaseFragment<ProfileFragmentBinding, Profil
 
 
 
+
     public static ProfileFragment newInstance(ProfileResponse profile) {
         Bundle args = new Bundle();
         args.putSerializable("profile", profile);

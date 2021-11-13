@@ -223,17 +223,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     @Override
     public void onProfileItemClick(ProfileResponse profile) {
-        Log.d(TAG, "Numan: this is from mainActivity  " + profile.getFirstName());
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .disallowAddToBackStack()
-                .setCustomAnimations(R.anim.slide_left,  R.anim.slide_right)
-                .add(R.id.clRootView, ProfileFragment.newInstance(profile), ProfileFragment.TAG)
-                .commit();
-
-
-
+        openFragment(ProfileFragment.newInstance(profile));
     }
 
 

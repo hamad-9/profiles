@@ -15,10 +15,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.hamad.profiles.MvvmApp;
+import com.hamad.profiles.R;
 import com.hamad.profiles.di.component.ActivityComponent;
 import com.hamad.profiles.di.component.DaggerActivityComponent;
 import com.hamad.profiles.di.module.ActivityModule;
 import com.hamad.profiles.ui.login.LoginActivity;
+import com.hamad.profiles.ui.main.profile.ProfileFragment;
 import com.hamad.profiles.utils.CommonUtils;
 import com.hamad.profiles.utils.NetworkUtils;
 
@@ -39,7 +41,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
 
     @Inject
     protected V mViewModel;
-
 
     public abstract int getBindingVariable();
 
@@ -131,5 +132,15 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         mViewDataBinding.setVariable(getBindingVariable(), mViewModel);
         mViewDataBinding.executePendingBindings();
     }
+
+    public void openFragment(BaseFragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .setCustomAnimations(R.anim.slide_left,  R.anim.slide_right)
+                .add(R.id.clRootView, fragment, ProfileFragment.TAG)
+                .commit();
+    }
+
 }
 
