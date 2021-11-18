@@ -1,4 +1,4 @@
-package com.hamad.profiles.ui.main;
+package com.hamad.profiles.ui.main.profiles;
 
 public class ProfileEmptyItemViewModel {
 

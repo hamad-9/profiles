@@ -1,15 +1,10 @@
-package com.hamad.profiles.ui.main;
+package com.hamad.profiles.ui.main.profiles;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,10 +13,7 @@ import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.databinding.ItemProfileEmptyViewBinding;
 import com.hamad.profiles.databinding.ItemProfileViewBinding;
 import com.hamad.profiles.ui.base.BaseViewHolder;
-import com.hamad.profiles.ui.main.profile.ProfileFragment;
-import com.hamad.profiles.utils.AppLogger;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,10 +94,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
 
     //-----------------------------------------------------------------------------------------------------------------
-    public class ProfileViewHolder extends BaseViewHolder implements ProfileItemViewModel.ProfileItemViewModelListener {
+    public class ProfileViewHolder extends BaseViewHolder implements ProfileNormalItemViewModel.ProfileItemViewModelListener {
 
         private ItemProfileViewBinding mBinding;
-        private ProfileItemViewModel mProfileItemViewModel;
+        private ProfileNormalItemViewModel mProfileNormalItemViewModel;
 
         public ProfileViewHolder(ItemProfileViewBinding binding) {
             super(binding.getRoot());
@@ -115,8 +107,8 @@ public class ProfileAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @Override
         public void onBind(int position) {
             final ProfileResponse profile = mProfileResponseList.get(position);
-            mProfileItemViewModel = new ProfileItemViewModel(profile, this);
-            mBinding.setViewModel(mProfileItemViewModel);
+            mProfileNormalItemViewModel = new ProfileNormalItemViewModel(profile, this);
+            mBinding.setViewModel(mProfileNormalItemViewModel);
             mBinding.executePendingBindings();
 
             Glide.with(mContext)

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.hamad.profiles.ui.main.ProfileEmptyItemViewModel" />
+            type="com.hamad.profiles.ui.main.profiles.ProfileEmptyItemViewModel" />
 
     </data>
 

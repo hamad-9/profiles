@@ -1,10 +1,10 @@
-package com.hamad.profiles.ui.main;
+package com.hamad.profiles.ui.main.profiles;
 
 import androidx.databinding.ObservableField;
 
 import com.hamad.profiles.data.model.api.ProfileResponse;
 
-public class ProfileItemViewModel {
+public class ProfileNormalItemViewModel {
 
     private static final String TAG = "ProfileItemViewModel";
     public final ObservableField<String> imageUrl;
@@ -17,7 +17,7 @@ public class ProfileItemViewModel {
     private final ProfileResponse mProfile;
 
 
-    public ProfileItemViewModel(ProfileResponse profile, ProfileItemViewModelListener listener) {
+    public ProfileNormalItemViewModel(ProfileResponse profile, ProfileItemViewModelListener listener) {
         this.mProfile = profile;
         this.mListener = listener;
 

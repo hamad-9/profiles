@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.hamad.profiles.ui.main.ProfileItemViewModel" />
+            type="com.hamad.profiles.ui.main.profiles.ProfileNormalItemViewModel" />
 
     </data>
 

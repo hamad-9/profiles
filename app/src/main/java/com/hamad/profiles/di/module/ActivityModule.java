@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.hamad.profiles.ViewModelProviderFactory;
 import com.hamad.profiles.data.DataManager;
-import com.hamad.profiles.data.model.api.ProfileResponse;
 import com.hamad.profiles.ui.base.BaseActivity;
 import com.hamad.profiles.ui.login.LoginViewModel;
 import com.hamad.profiles.ui.main.MainViewModel;
-import com.hamad.profiles.ui.main.ProfileAdapter;
+import com.hamad.profiles.ui.main.profiles.ProfileAdapter;
 import com.hamad.profiles.ui.splash.SplashViewModel;
 import com.hamad.profiles.utils.rx.SchedulerProvider;
 
